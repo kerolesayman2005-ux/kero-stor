@@ -1,86 +1,90 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kero-Stor | إنشاء حساب</title>
-    <style>
-        body {
-            background-color: #121212; /* خلفية سوداء فخمة */
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            margin: 0;
-            color: white;
-        }
-        .container {
-            background: #1e1e1e;
-            padding: 30px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            width: 90%;
-            max-width: 400px;
-            text-align: center;
-            border: 1px solid #333;
-        }
-        /* تظبيط صورتك اللي في الملف */
-        .profile-img {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 3px solid #e67e22;
-            margin-bottom: 15px;
-        }
-        h2 { color: #e67e22; margin-bottom: 5px; }
-        .subtitle { color: #aaa; margin-bottom: 25px; font-size: 14px; }
-        input, select {
-            width: 100%;
-            padding: 12px;
-            margin-bottom: 15px;
-            border-radius: 10px;
-            border: 1px solid #444;
-            background: #2b2b2b;
-            color: white;
-            box-sizing: border-box;
-        }
-        .btn {
-            width: 100%;
-            padding: 12px;
-            background: #e67e22;
-            color: white;
-            border: none;
-            border-radius: 10px;
-            font-size: 18px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-        .btn:hover { background: #d35400; }
-    </style>
-</head>
-<body>
+from flask import Flask, render_template, request, redirect, url_for, session, flash
+import json
+import os
 
-    <div class="container">
-        <img src="kero.jpg" alt="كيرلس أيمن" class="profile-img">
-        
-        <h2>KERO-STOR</h2>
-        <div class="subtitle">تجارة أيمن لمعي - بإشراف كيرلس أيمن</div>
+app = Flask(__name__)
+app.secret_key = "secret_key_for_session"  # خليها سرية في المشاريع الحقيقية
 
-        <form>
-            <input type="text" placeholder="الاسم الكامل" required>
-            <input type="tel" placeholder="رقم الهاتف" required>
-            <select required>
-                <option value="" disabled selected>اختر نوع الحساب</option>
-                <option>عامل</option>
-                <option>شريك</option>
-                <option>تاجر الحافظة</option>
-            </select>
-            <button type="submit" class="btn">إنشاء حساب</button>
-        </form>
-    </div>
+USERS_FILE = "users.json"
 
-</body>
-</html>
+# تحميل المستخدمين من الملف أو إنشاء ملف جديد لو مش موجود
+def load_users():
+    if os.path.exists(USERS_FILE):
+        with open(USERS_FILE, "r") as f:
+            return json.load(f)
+    else:
+        return {}
+
+# حفظ المستخدمين في الملف
+def save_users(users):
+    with open(USERS_FILE, "w") as f:
+        json.dump(users, f)
+
+@app.route("/")
+def home():
+    if "username" in session:
+        return f"أهلا {session['username']}! أنت مسجل دخول كـ {session['role']} <br><a href='/logout'>تسجيل خروج</a>"
+    return redirect(url_for("login"))
+
+@app.route("/register", methods=["GET", "POST"])
+def register():
+    if request.method == "POST":
+        username = request.form["username"]
+        phone = request.form["phone"]
+        role = request.form["role"]
+
+        users = load_users()
+        if username in users:
+            flash("الاسم مستخدم بالفعل!")
+            return redirect(url_for("register"))
+
+        users[username] = {"phone": phone, "role": role}
+        save_users(users)
+        flash("تم التسجيل بنجاح! يمكنك الآن تسجيل الدخول.")
+        return redirect(url_for("login"))
+
+    return '''
+    <h2>إنشاء حساب</h2>
+    <form method="post">
+        الاسم: <input type="text" name="username" required><br>
+        رقم الهاتف: <input type="text" name="phone" required><br>
+        اختر الدور:
+        <select name="role" required>
+            <option value="عامل">عامل</option>
+            <option value="شريك">شريك</option>
+            <option value="تاجر">تاجر</option>
+        </select><br><br>
+        <input type="submit" value="تسجيل">
+    </form>
+    '''
+
+@app.route("/login", methods=["GET", "POST"])
+def login():
+    if request.method == "POST":
+        username = request.form["username"]
+
+        users = load_users()
+        if username in users:
+            session["username"] = username
+            session["role"] = users[username]["role"]
+            return redirect(url_for("home"))
+        else:
+            flash("اسم المستخدم غير موجود!")
+            return redirect(url_for("login"))
+
+    return '''
+    <h2>تسجيل دخول</h2>
+    <form method="post">
+        الاسم: <input type="text" name="username" required><br>
+        <input type="submit" value="دخول">
+    </form>
+    '''
+
+@app.route("/logout")
+def logout():
+    session.pop("username", None)
+    session.pop("role", None)
+    return redirect(url_for("login"))
+
+if __name__ == "__main__":
+    app.run(debug=True)

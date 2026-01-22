@@ -1,82 +1,60 @@
-
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>كيرو ستور - Kero Store</title>
+    <title>متجر أيمن لمعي - لجميع أنواع الطيور</title>
     <style>
-        body { 
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-            background-color: #f8f9fa; 
-            margin: 0; 
-            padding: 20px; 
-            text-align: center; 
-        }
-        h1 { color: #2c3e50; margin-bottom: 5px; }
-        .subtitle { color: #7f8c8d; margin-bottom: 30px; }
-        .container { 
-            display: flex; 
-            flex-wrap: wrap; 
-            justify-content: center; 
-            gap: 20px; 
-        }
-        .product-card { 
-            background: white; 
-            border-radius: 20px; 
-            box-shadow: 0 10px 20px rgba(0,0,0,0.05); 
-            padding: 15px; 
-            width: 260px; 
-            transition: 0.3s;
-            border: 1px solid #eee;
-        }
-        .product-card:hover { transform: scale(1.03); }
-        .product-card img { 
-            width: 100%; 
-            border-radius: 15px; 
-            height: 180px; 
-            object-fit: cover; 
-        }
-        .product-title { font-size: 1.3em; margin: 15px 0 5px 0; color: #333; }
-        .price { color: #27ae60; font-size: 1.5em; font-weight: bold; margin-bottom: 15px; }
-        .buy-btn { 
-            background-color: #25d366; 
-            color: white; 
-            padding: 12px 20px; 
-            border-radius: 10px; 
-            text-decoration: none; 
-            font-weight: bold; 
-            display: block; 
-            transition: 0.3s;
-        }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f0f2f5; text-align: center; margin: 0; padding: 0; color: #1c1e21; }
+        .profile-container { margin-top: 40px; }
+        .profile-img { width: 150px; height: 150px; border-radius: 50%; border: 6px solid #fff; box-shadow: 0 4px 20px rgba(0,0,0,0.15); object-fit: cover; }
+        header { padding: 20px; }
+        h1 { color: #075e54; font-size: 2.2em; margin-bottom: 5px; }
+        .highlight { color: #e44d26; font-weight: bold; }
+        .description { font-size: 1.2em; color: #555; max-width: 600px; margin: 0 auto 30px; line-height: 1.6; }
+        .container { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; padding: 20px; }
+        .product-card { background: #fff; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); padding: 20px; width: 280px; transition: 0.3s; }
+        .product-card:hover { transform: translateY(-10px); }
+        .product-card img { width: 100%; border-radius: 15px; height: 180px; object-fit: cover; }
+        .product-card h3 { margin: 15px 0; font-size: 1.5em; color: #333; }
+        .price { font-size: 1.8em; color: #27ae60; font-weight: bold; margin-bottom: 15px; }
+        .buy-btn { background-color: #25d366; color: #fff; text-decoration: none; padding: 12px; border-radius: 12px; display: block; font-weight: bold; font-size: 1.1em; transition: 0.3s; }
         .buy-btn:hover { background-color: #128c7e; }
+        footer { margin: 50px 0; color: #888; border-top: 1px solid #ddd; padding-top: 20px; }
     </style>
 </head>
 <body>
 
-    <h1>🛒 كيرو ستور - Kero Store</h1>
-    <p class="subtitle">أفضل أنواع الطيور - احجز طلبك الآن عبر واتساب</p>
-
-    <div class="container">
-        
-        <div class="product-card">
-            <img src="https://images.unsplash.com/photo-1548550023-2bdb3c5beed7?q=80&w=500" alt="فراخ">
-            <h3 class="product-title">الفراخ</h3>
-            <div class="price">10 جنيه</div>
-            <a href="https://wa.me/201055230029?text=أريد حجز طلب (فراخ) بسعر 10 جنيه" class="buy-btn">طلب عبر واتساب 💬</a>
-        </div>
-
-        <div class="product-card">
-            <img src="https://images.unsplash.com/photo-1606334265438-e69623707077?q=80&w=500" alt="كتاكيت">
-            <h3 class="product-title">الكتاكيت</h3>
-            <div class="price">15 جنيه</div>
-            <a href="https://wa.me/201055230029?text=أريد حجز طلب (كتاكيت) بسعر 15 جنيه" class="buy-btn">طلب عبر واتساب 💬</a>
-        </div>
-
+    <div class="profile-container">
+        <img src="WhatsApp Image 2026-01-21 at 7.12.13 PM.jpeg" alt="أيمن لمعي" class="profile-img">
     </div>
 
-    <footer style="margin-top: 50px; color: #bdc3c7;">
-        <p>تصميم متجر كيرو &copy; 2026</p>
+    <header>
+        <h1>مشروع <span class="highlight">أيمن لمعي</span> لتجارة الطيور</h1>
+        <p class="description">
+            نحن فخورون بأننا <span class="highlight">أكبر تجارة للبط والفراخ في مصر</span>. 
+            خبرة سنوات في اختيار أجود السلالات وتوصيلها لباب بيتك بأفضل الأسعار.
+        </p>
+    </header>
+
+    <div class="container">
+        <div class="product-card">
+            <img src="https://images.unsplash.com/photo-1548550023-2bdb3c5beed7?q=80&w=500" alt="فراخ">
+            <h3>فراخ بلدي ومزارع</h3>
+            <p class="price">10 جنيه</p>
+            <a href="https://wa.me/201055230029?text=يا أستاذ أيمن، أريد طلب فراخ" class="buy-btn">اطلب من أيمن الآن ✅</a>
+        </div>
+
+        <div class="product-card">
+            <img src="https://images.unsplash.com/photo-1555852224-2a3e675cd47e?q=80&w=500" alt="بط">
+            <h3>بط مسكوفي ومولار</h3>
+            <p class="price">20 جنيه</p>
+            <a href="https://wa.me/201055230029?text=يا أستاذ أيمن، أريد طلب بط" class="buy-btn">اطلب البط الآن ✅</a>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2026 جميع الحقوق محفوظة لـ أيمن لمعي - رائد تجارة الطيور في مصر</p>
     </footer>
 
 </body>

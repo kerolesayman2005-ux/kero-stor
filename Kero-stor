@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kero-Stor | كيرلس أيمن</title>
+    <title>Kero-Stor | إنشاء حساب</title>
     <style>
         body {
-            background: #1a1a1a; /* خلفية سوداء شيك */
-            font-family: 'Segoe UI', Tahoma, sans-serif;
+            background-color: #121212; /* خلفية سوداء فخمة */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -16,36 +16,35 @@
             color: white;
         }
         .container {
-            background: #262626;
+            background: #1e1e1e;
             padding: 30px;
-            border-radius: 25px;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-            width: 380px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            width: 90%;
+            max-width: 400px;
             text-align: center;
-            border: 1px solid #444;
+            border: 1px solid #333;
         }
-        /* تظبيط صورتك الشخصية */
+        /* تظبيط صورتك اللي في الملف */
         .profile-img {
-            width: 150px;
-            height: 150px;
+            width: 120px;
+            height: 120px;
             border-radius: 50%;
             object-fit: cover;
-            border: 4px solid #e67e22;
+            border: 3px solid #e67e22;
             margin-bottom: 15px;
-            box-shadow: 0 0 15px #e67e22;
         }
-        h2 { color: #e67e22; margin: 10px 0; }
-        p { color: #ccc; font-size: 14px; margin-bottom: 20px; }
-        
+        h2 { color: #e67e22; margin-bottom: 5px; }
+        .subtitle { color: #aaa; margin-bottom: 25px; font-size: 14px; }
         input, select {
             width: 100%;
             padding: 12px;
             margin-bottom: 15px;
             border-radius: 10px;
-            border: none;
-            background: #333;
+            border: 1px solid #444;
+            background: #2b2b2b;
             color: white;
-            font-size: 16px;
+            box-sizing: border-box;
         }
         .btn {
             width: 100%;
@@ -65,10 +64,10 @@
 <body>
 
     <div class="container">
-        <img src="kero-photo.jpg" alt="كيرلس أيمن" class="profile-img">
+        <img src="kero.jpg" alt="كيرلس أيمن" class="profile-img">
         
         <h2>KERO-STOR</h2>
-        <p>تجارة أيمن لمعي - بإشراف كيرلس أيمن</p>
+        <div class="subtitle">تجارة أيمن لمعي - بإشراف كيرلس أيمن</div>
 
         <form>
             <input type="text" placeholder="الاسم الكامل" required>

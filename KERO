@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kero Stor</title>
+
+<style>
+body{
+    margin:0;
+    font-family: Arial;
+    background:#f4f4f4;
+}
+
+header{
+    background:#111;
+    color:white;
+    text-align:center;
+    padding-bottom:20px;
+}
+
+header img{
+    width:100%;
+    max-height:300px;
+    object-fit:cover;
+}
+
+h1{
+    margin:10px 0 5px;
+}
+
+.products{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    flex-wrap:wrap;
+    padding:20px;
+}
+
+.product{
+    background:white;
+    width:260px;
+    padding:15px;
+    border-radius:15px;
+    box-shadow:0 5px 15px rgba(0,0,0,.1);
+    transition:transform .3s;
+}
+
+.product:hover{
+    transform:scale(1.05);
+}
+
+.price{
+    color:green;
+    font-size:18px;
+    font-weight:bold;
+}
+
+.btn{
+    display:inline-block;
+    margin-top:10px;
+    padding:10px 15px;
+    background:#25d366;
+    color:white;
+    text-decoration:none;
+    border-radius:20px;
+}
+
+.counter, .order, .map{
+    background:white;
+    margin:20px;
+    padding:20px;
+    border-radius:15px;
+}
+
+input, select{
+    width:100%;
+    padding:10px;
+    margin:10px 0;
+}
+
+footer{
+    background:#222;
+    color:white;
+    text-align:center;
+    padding:15px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <img src="header.jpg">
+    <h1>🔥 Kero Stor 🔥</h1>
+    <p>تجارة الفراخ والبط – حجز سريع</p>
+</header>
+
+<section class="products">
+    <div class="product">
+        <h3>🐔 فراخ</h3>
+        <p class="price">50 جنيه</p>
+        <a class="btn" href="https://wa.me/201055230029?text=عايز%20احجز%20فراخ">🛒 اطلب</a>
+    </div>
+
+    <div class="product">
+        <h3>🦆 بط</h3>
+        <p class="price">100 جنيه</p>
+        <a class="btn" href="https://wa.me/201055230029?text=عايز%20احجز%20بط">🛒 اطلب</a>
+    </div>
+</section>
+
+<section class="counter">
+    <h2>🧮 عدد زوار الموقع</h2>
+    <img src="https://hitwebcounter.com/counter/counter.php?page=8888888&style=0006&nbdigits=5&type=page&initCount=0">
+</section>
+
+<section class="order">
+    <h2>✍️ تسجيل طلب</h2>
+    <input type="text" placeholder="اسمك">
+    <select>
+        <option>فراخ</option>
+        <option>بط</option>
+    </select>
+    <a class="btn" href="https://wa.me/201055230029">إرسال الطلب</a>
+</section>
+
+<section class="map">
+    <h2>📍 مكاننا</h2>
+    <iframe
+        src="https://maps.google.com/maps?q=egypt&t=&z=13&ie=UTF8&iwloc=&output=embed"
+        width="100%" height="250" style="border:0;">
+    </iframe>
+</section>
+
+<footer>
+    <p>📞 01055230029</p>
+    <p>© 2026 Kero Stor</p>
+</footer>
+
+</body>
+</html>
